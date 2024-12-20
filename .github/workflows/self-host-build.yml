@@ -1,0 +1,55 @@
+name: self-host-build
+on:
+  workflow_dispatch:
+    inputs:
+      package:
+        description: 'package name'
+        required: true
+        default: 'lsphp83'
+        type: choice
+        options:
+          - lsphp83
+          - lsphp83-apcu
+          - lsphp83-imagick
+          - lsphp83-ioncube
+          - lsphp83-memcached
+          - lsphp83-msqpack
+          - lsphp83-pear
+          - lsphp83-redis
+      version:
+        description: 'version number'
+        required: true
+        type: number
+      revision:
+        description: 'revision number'
+        required: true
+        type: number        
+      distro:
+        description: 'distro'
+        required: true
+        default: 'noble'
+        type: choice
+        options:
+          - noble
+          - jammy
+          - bookworm
+          - bullseye
+      arch:
+        description: 'arch'
+        required: true
+        default: 'amd64'
+        type: choice
+        options:
+          - amd64
+          - arm64
+
+jobs:
+  package:
+    runs-on: self-hosted
+    steps:
+      - uses: actions/checkout@v2
+      - name: setup
+        run: | 
+          pwd
+          ls -al
+          bash build.sh ${{ inputs.package }} ${{ inputs.version }} ${{ inputs.revision }} ${{ inputs.distro }} ${{ inputs.arch }}

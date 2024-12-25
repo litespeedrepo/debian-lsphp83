@@ -47,5 +47,8 @@ done
 echo " ################# End of Result #################"
 echo $(date)
 
-
-
+ls -lR $BUILD_RESULT_DIR/$dist | grep ${product}_${version}-${revision}+${dists}_${input_archs}.deb
+if [ ${?} != 0 ] ; then
+    echo "${product}_${version}-${revision}+${dists}_${input_archs}.deb is not found!"
+    exit 1
+fi

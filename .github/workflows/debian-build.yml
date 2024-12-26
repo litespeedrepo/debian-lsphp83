@@ -1,4 +1,4 @@
-name: debian-build
+name: github-amd64-build
 
 on:
   workflow_dispatch:

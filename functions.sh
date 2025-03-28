@@ -223,8 +223,9 @@ pbuild_packages(){
 
           export DISTRO_TEST=${distro}
           DIST=${dist} ARCH=${arch} pbuilder --update
-          pdebuild --debbuildopts -j8 --architecture ${arch} --buildresult ../build-result/${dist} --pbuilderroot "sudo DIST=${dist} ARCH=${arch}" \
-            | tee  ../build-result/$dist/build-record-${dist}-${arch}.log
+          pdebuild --debbuildopts -j8 --architecture ${arch} --buildresult ../build-result/${dist} --pbuilderroot "sudo DIST=${dist} ARCH=${arch}" -- --hookdir $HOME
+          #pdebuild --debbuildopts -j8 --architecture ${arch} --buildresult ../build-result/${dist} --pbuilderroot "sudo DIST=${dist} ARCH=${arch}" \
+            | tee  ../build-result/$dist/build-record-${dist}-${arch}.log            
         done
     done
 }

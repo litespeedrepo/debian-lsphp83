@@ -17,6 +17,7 @@ on:
           - lsphp83-msqpack
           - lsphp83-pear
           - lsphp83-redis
+          - lsphp83-igbinary          
       version:
         description: 'version number'
         required: true

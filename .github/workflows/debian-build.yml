@@ -14,7 +14,7 @@ on:
           - lsphp83-imagick
           - lsphp83-ioncube
           - lsphp83-memcached
-          - lsphp83-msqpack
+          - lsphp83-msgpack
           - lsphp83-pear
           - lsphp83-redis
           - lsphp83-igbinary          
@@ -58,5 +58,7 @@ jobs:
           ls -al
           pwd
           cp /root/.pbuilderrc $HOME/
+          cp B92test-pkg $HOME/
+          chmod +x $HOME/B92test-pkg          
           bash build.sh ${{ inputs.package }} ${{ inputs.version }} ${{ inputs.revision }} ${{ inputs.distro }} ${{ inputs.arch }}
           
